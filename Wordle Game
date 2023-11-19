@@ -1,0 +1,69 @@
+#include <iostream>
+#include <string>
+#include "read_words.h"
+
+using namespace std;
+
+
+int main(int argc, char *argv[]) {
+    // Gets a random word from a file.
+    string answer = GetRandomWord(argc, argv);
+
+    ///////////////////////
+    // Student code here //
+int numGuesses = 0;
+char letter;
+string guess;
+cout << "Enter a 5 letter guess?" << endl;
+cin >> guess;
+
+while (numGuesses <= 5 && guess != answer) {
+    numGuesses = numGuesses + 1;
+    int index = 0;
+    while (index <= 4) {
+       letter = guess.at(index);
+       if (letter == answer.at(index)){
+          cout << letter << " - Green" << endl;
+ 
+    } else if (letter != answer.at(0) && letter != answer.at(1) && letter != answer.at(2) &&    
+            letter != answer.at(3) && letter != answer.at(4)) {
+          cout << letter << " - Red" << endl;
+       
+       } else {
+          cout <<  letter << " - Yellow" << endl;
+       
+     
+       }
+       index = index + 1;
+   }
+
+   if (numGuesses < 6){
+      cout << "Enter a 5 letter guess?" << endl;
+      cin >> guess;
+}
+}
+
+   if (guess == answer) {
+    // What should be printed in this case?
+    numGuesses = numGuesses + 1;
+    int index = 0;
+     while (index <= 4) {
+       letter = guess.at(index);
+        if (letter == answer.at(index)){
+          cout << letter << " - Green" << endl;
+ 
+    }
+        index = index + 1;
+    }
+   cout << "You Won! That took " << numGuesses << " guess(es)." << endl;
+   } else {
+    // What should be printed in this case?
+   cout << "You lost. The answer was " << answer << "." << endl;
+
+}
+
+
+    // your code here
+
+    return 0;
+}
